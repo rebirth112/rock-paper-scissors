@@ -1,15 +1,19 @@
+body {
+    background-image: url('https://thumbs.dreamstime.com/b/game-pc-accessories-wallpaper-design-line-technology-cover-white-backdrop-leisure-background-vector-template-electronic-esports-177398310.jpg?fbclid=IwAR1tDNp2VzDtNQUSWe-MS8SjC57mhCHV1eUzixlarHMRkJLSggBYzP-K_S8');
+    
+}
 .buttons {
     display: flex;
     justify-content: space-around;
-    margin-top: 400px;
-    margin-bottom: 50px;
+    margin-top: 300px;
+    margin-bottom: 100px;
 }
 
 #rock, #paper, #scissors {
     font-family: 'Poppins';
     color: #fff !important;
     text-transform: uppercase;
-    font-size: 25px;
+    font-size: 45px;
     font-weight: 700;
     text-decoration: none;
     background: #60a3bc;
@@ -17,7 +21,7 @@
     border-radius: 50px;
     display: inline-block;
     border: none;
-    transition: all 0.4s ease 0s;
+    transition: all 0.2s ease 0s;
 }
 
 #rock:hover, #paper:hover, #scissors:hover {

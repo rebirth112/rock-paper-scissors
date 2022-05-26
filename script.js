@@ -101,10 +101,14 @@ function selectScissors () {
 
 var gameResults = document.createElement('div');
 gameResults.setAttribute('align', 'center');
+gameResults.style.fontWeight = 'bolder';
+gameResults.style.fontSize = 'x-large';
 document.body.appendChild(gameResults);
 
 var totalScore = document.createElement('div');
 totalScore.setAttribute('align', 'center');
+totalScore.style.fontWeight = 'bolder';
+totalScore.style.fontSize = 'x-large';
 totalScore.innerText = ('The current score is 0-0. Choose your selection!')
 document.body.appendChild(totalScore);
 
