@@ -9,53 +9,102 @@ function computerPlay() {
     }
 }
 
+let playerScore = 0;
+let computerScore = 0;
 
 function playRound(playerSelection, computerSelection) {
     let playerChoice = playerSelection.toLowerCase()
     if (playerChoice === 'rock' && computerSelection === 'rock') {
-        console.log(`It's a tie! ${playerChoice} and ${computerSelection} tie out!`)
+        gameResults.innerText = (`It's a tie! ${playerChoice} and ${computerSelection} tie out!`)
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'rock' && computerSelection === 'paper') {
-        console.log(`You lose! ${computerSelection} beats ${playerChoice}!`)
+        gameResults.innerText = (`You lose! ${computerSelection} beats ${playerChoice}!`)
         computerScore = computerScore + 1
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'rock' && computerSelection === 'scissors') {
-        console.log(`You win! ${playerChoice} beats ${computerSelection}!`)
+        gameResults.innerText = (`You win! ${playerChoice} beats ${computerSelection}!`)
         playerScore = playerScore + 1
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'paper' && computerSelection === 'rock') {
-        console.log(`You win! ${playerChoice} beats ${computerSelection}!`)
+        gameResults.innerText = (`You win! ${playerChoice} beats ${computerSelection}!`)
         playerScore = playerScore + 1
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'paper' && computerSelection === 'paper') {
-        console.log(`It's a tie! ${playerChoice} and ${computerSelection} tie out!`)
+        gameResults.innerText = (`It's a tie! ${playerChoice} and ${computerSelection} tie out!`)
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'paper' && computerSelection === 'scissors') {
-        console.log(`You lose! ${computerSelection} beats ${playerChoice}!`)
+        gameResults.innerText = (`You lose! ${computerSelection} beats ${playerChoice}!`)
         computerScore = computerScore + 1
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'scissors' && computerSelection === 'rock') {
-        console.log(`You lose! ${computerSelection} beats ${playerChoice}!`)
+        gameResults.innerText = (`You lose! ${computerSelection} beats ${playerChoice}!`)
         computerScore = computerScore + 1
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'scissors' && computerSelection === 'paper') {
-        console.log(`You win! ${playerChoice} beats ${computerSelection}!`)
+        gameResults.innerText = (`You win! ${playerChoice} beats ${computerSelection}!`)
         playerScore = playerScore + 1
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     } else if (playerChoice === 'scissors' && computerSelection === 'scissors') {
-        console.log(`It's a tie! ${playerChoice} and ${computerSelection} tie out!`)
+        gameResults.innerText = (`It's a tie! ${playerChoice} and ${computerSelection} tie out!`)
+        totalScore.innerText = (`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
     }
 }
 
-let playerScore = 0
-let computerScore = 0
+var rockButton = document.querySelector('#rock');
+rockButton.addEventListener('click', selectRock);
 
-function game() {
-    playerScore = 0
-    computerScore = 0
-    for (let i = 0; i <5; i++) {
-        let playerSelection = prompt('Enter your choice: Rock, Paper, Or Scissors?')
-        let computerSelection = computerPlay()
-        playRound(playerSelection, computerSelection)
-        console.log(`Your current score is ${playerScore}. The Computer's score is ${computerScore}`)
-        }
+var finalResults = document.createElement('h1');
+finalResults.setAttribute('align', 'center');
+
+function selectRock () {
+    let playerSelection = 'rock';
+    playRound(playerSelection, computerPlay());
+    if (playerScore === 5) {
+        finalResults.innerText = 'You Win! Refresh the page to play again!'
+        document.body.appendChild(finalResults);
+    } else if (computerScore === 5) {
+        finalResults.innerText = 'You Lose! Refresh the page to play again!!'
+        document.body.appendChild(finalResults);
     }
-    if (playerScore > computerScore) {
-        console.log('You win the game!')
-    } else if (playerScore < computerScore) {
-        console.log('You lost!!!')
+}
+
+var paperButton = document.querySelector('#paper');
+paperButton.addEventListener('click', selectPaper);
+
+function selectPaper () {
+    let playerSelection = 'paper';
+    playRound(playerSelection, computerPlay());
+    if (playerScore === 5) {
+        finalResults.innerText = 'You Win! Refresh the page to play again!'
+        document.body.appendChild(finalResults);
+    } else if (computerScore === 5) {
+        finalResults.innerText = 'You Lose! Refresh the page to play again!'
+        document.body.appendChild(finalResults);
     }
 
-game();
+}
+
+var scissorsButton = document.querySelector('#scissors');
+scissorsButton.addEventListener('click', selectScissors);
+
+function selectScissors () {
+    let playerSelection = 'scissors';
+    playRound(playerSelection, computerPlay());
+    if (playerScore === 5) {
+        finalResults.innerText = 'You Win! Refresh the page to play again!'
+        document.body.appendChild(finalResults);
+    } else if (computerScore === 5) {
+        finalResults.innerText = 'You Lose! Refresh the page to play again!'
+        document.body.appendChild(finalResults);
+    }
+}
+
+var gameResults = document.createElement('div');
+gameResults.setAttribute('align', 'center');
+document.body.appendChild(gameResults);
+
+var totalScore = document.createElement('div');
+totalScore.setAttribute('align', 'center');
+totalScore.innerText = ('The current score is 0-0. Choose your selection!')
+document.body.appendChild(totalScore);
+
